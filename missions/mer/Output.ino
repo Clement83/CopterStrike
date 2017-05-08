@@ -150,14 +150,17 @@ void outpt_drawHUD(){
   gb.display.setColor(BLACK);
 
 
-  if(convoiSecuriser && cptAnim<15 && player.altitude>0){
+
+  if(timerToWin == 0 && player.altitude>0){
     gb.display.print("    Return to base.");
   }else{
     gb.display.drawBitmap(21,1,HUD);
-    switch(player.moveMode){
+    /*switch(player.moveMode){
       case 0: gb.display.print("$");gb.display.print(money); break;
       case 1: gb.display.print(destroyedBuildings);gb.display.print("/");gb.display.print(nbBuilding_Hostile); break;
-    }
+    }*/
+    gb.display.print(" ");
+    gb.display.print(timerToWin);
     
     gb.display.fillRect(49,2,player.life/(MAXLIFE/10),2); //life
     //gb.display.fillRect(29,2,Camion.life/(MAX_LIFE_CAM/10),2); //life Camion

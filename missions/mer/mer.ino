@@ -23,6 +23,10 @@ const byte torpilleAir[] PROGMEM = {16,6,0x0,0x0,0x0,0x0,0x0,0x0,0x1F,0xC0,0x20,
 const byte torpilleEau[] PROGMEM = {16,7,0x30,0x0,0x40,0xC0,0x81,0x8,0x3E,0x11,0x81,0x8,0x40,0xC0,0x30,0x0,};
 const byte torpillePlouf[] PROGMEM = {16,6,0x48,0x0,0x1,0x20,0x89,0x40,0x40,0x0,0x35,0x60,0xA,0x80,};
 
+
+#define NB_SEC_TO_WIN 700
+uint16_t timerToWin=NB_SEC_TO_WIN;
+
 #define PORTEAVION_XWORLD 239
 #define PORTEAVION_YWORLD 278
 
@@ -222,8 +226,10 @@ void loop() {
       if(gb.buttons.pressed(BTN_C)){
         returnToMenu();
       }
-      
+      updateWorld();
       updatePorteAvion();
+      
+      drawWorld();
       drawPorteAvion();
 
       //draw baseCamps          (Base, fuel, garage, heliport)
